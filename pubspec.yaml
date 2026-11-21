@@ -50,16 +50,12 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
-# important!
+# The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/icons/
     - assets/images/
-  fonts:
-    - family: Klavika
-      fonts:
-        - asset: assets/fonts/KlavikaBoldBold.otf
-    - family: Frutiger
-      fonts:
-        - asset: assets/fonts/FrutigerLTStd-Roman.otf
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
   uses-material-design: true

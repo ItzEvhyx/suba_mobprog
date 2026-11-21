@@ -9,6 +9,7 @@ class NewsfeedCard extends StatelessWidget {
   final String date;
   final int? numOfLikes;
   final bool? hasImage;
+  final String? imagePath;
 
   const NewsfeedCard({
     super.key,
@@ -17,6 +18,7 @@ class NewsfeedCard extends StatelessWidget {
     required this.date,
     this.numOfLikes,
     this.hasImage,
+    this.imagePath,
   });
 
   @override
@@ -36,7 +38,10 @@ class NewsfeedCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.person),
+                const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/images/choi_pfp.jpg'),
+                ),
                 SizedBox(width: screenUtilWidth),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,8 +85,8 @@ class NewsfeedCard extends StatelessWidget {
             ),
             SizedBox(height: ScreenUtil().setHeight(5)),
 
-            hasImage == true
-                ? const Image(image: AssetImage('assets/images/iron_man.jpg'))
+            hasImage == true && imagePath != null
+                ? Image(image: AssetImage(imagePath!))
                 : SizedBox.shrink(),
 
             Row(
@@ -117,28 +122,32 @@ class NewsfeedCard extends StatelessWidget {
 
             Row(
               children: [
-                Icon(Icons.person),
+                const CircleAvatar(
+                  radius: 15,
+                  backgroundImage: AssetImage('assets/images/choi_pfp.jpg'),
+                ),
                 SizedBox(width: ScreenUtil().setWidth(10)),
-                Container(
-                  padding: EdgeInsets.fromLTRB(
-                    ScreenUtil().setWidth(10),
-                    0,
-                    0,
-                    0,
-                  ),
-                  alignment: Alignment.centerLeft,
-                  height: ScreenUtil().setHeight(25),
-                  width: ScreenUtil().setWidth(330),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(ScreenUtil().setSp(10)),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(
+                      ScreenUtil().setWidth(10),
+                      0,
+                      0,
+                      0,
                     ),
-                  ),
-                  child: CustomText(
-                    text: 'Write a comment...',
-                    fontSize: ScreenUtil().setSp(11),
-                    color: Colors.grey,
+                    alignment: Alignment.centerLeft,
+                    height: ScreenUtil().setHeight(25),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(ScreenUtil().setSp(10)),
+                      ),
+                    ),
+                    child: CustomText(
+                      text: 'Write a comment...',
+                      fontSize: ScreenUtil().setSp(11),
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               ],
