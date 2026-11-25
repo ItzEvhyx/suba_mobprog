@@ -8,8 +8,11 @@ class NewsfeedCard extends StatelessWidget {
   final String postContent;
   final String date;
   final int? numOfLikes;
+  final int? numOfComments;
+  final int? numOfShares;
   final bool? hasImage;
   final String? imagePath;
+  final String? profilePic;
 
   const NewsfeedCard({
     super.key,
@@ -17,8 +20,11 @@ class NewsfeedCard extends StatelessWidget {
     required this.postContent,
     required this.date,
     this.numOfLikes,
+    this.numOfComments,
+    this.numOfShares,
     this.hasImage,
     this.imagePath,
+    this.profilePic,
   });
 
   @override
@@ -38,9 +44,11 @@ class NewsfeedCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage('assets/images/choi_pfp.jpg'),
+                  backgroundImage: AssetImage(
+                    profilePic ?? imagePath ?? 'assets/images/choi_pfp.jpg',
+                  ),
                 ),
                 SizedBox(width: screenUtilWidth),
                 Column(
@@ -98,21 +106,25 @@ class NewsfeedCard extends StatelessWidget {
                   },
                   icon: Icon(Icons.thumb_up, color: fbPrimary),
                   label: CustomText(
-                    text: numOfLikes.toString(),
+                    text: (numOfLikes ?? 0).toString(),
                     fontSize: ScreenUtil().setSp(12),
                     color: fbDarkPrimary,
                   ),
                 ),
-                CustomText(
-                  text: 'Comment',
-                  fontSize: ScreenUtil().setSp(12),
-                  color: fbDarkPrimary,
+                TextButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.comment, color: fbDarkPrimary),
+                  label: CustomText(
+                    text: 'Comment (${numOfComments ?? 0})',
+                    fontSize: ScreenUtil().setSp(12),
+                    color: fbDarkPrimary,
+                  ),
                 ),
                 TextButton.icon(
                   onPressed: () {},
                   icon: Icon(Icons.redo, color: fbDarkPrimary),
                   label: CustomText(
-                    text: 'Share',
+                    text: 'Share (${numOfShares ?? 0})',
                     fontSize: ScreenUtil().setSp(12),
                     color: fbDarkPrimary,
                   ),

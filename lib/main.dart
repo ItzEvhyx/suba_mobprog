@@ -1,7 +1,10 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:suba_mobprog/screens/friends_screen.dart';
 import 'package:suba_mobprog/screens/home_screen.dart';
 import 'package:suba_mobprog/screens/newsfeed_screen.dart';
+import 'package:suba_mobprog/screens/notification_screen.dart';
+import 'package:suba_mobprog/screens/profile_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -19,11 +22,14 @@ class MainApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: "Facebook Replication",
+          title: "BaddiesHub",
           initialRoute: "/home",
           routes: {
             "/newsfeed": (context) => const NewsfeedScreen(),
             "/home": (context) => const HomeScreen(),
+            "/friends": (context) => const FriendsScreen(),
+            "/notifications": (context) => const NotificationScreen(),
+            "/profile": (context) => const ProfileScreen(),
           },
         ); // MaterialApp
       },
